@@ -25,31 +25,31 @@ def move_picture(in_path, out_path):
                 f.append(filename)
 
     for i in dh:
-        path2 = os.path.join(i,'使用人身份证人像面.jpg')
-        path3 = os.path.join(i,'使用人身份证国徽面.jpg')
-        path4 = os.path.join(i,'使用人配偶身份证人像面.jpg')
-        path5 = os.path.join(i,'使用人配偶身份证国徽面.jpg')
+        path2 = os.path.join(i, '使用人身份证人像面.jpg')
+        path3 = os.path.join(i, '使用人身份证国徽面.jpg')
+        path4 = os.path.join(i, '使用人配偶身份证人像面.jpg')
+        path5 = os.path.join(i, '使用人配偶身份证国徽面.jpg')
         lis = i.split('\\')
         coder = lis[-2][:-2]  # 每个人的文件夹名去掉最后一位数字
         for j in sh:
             if coder in j:
                 try:
-                    shutil.copy(path2, os.path.join(j,'test.jpg'))
+                    shutil.copy(path2, os.path.join(j,'001.jpg'))
                 except FileNotFoundError:
                     print('无法找到照片文件，请核对文件'+path2+'名称是否正确')
                 try:
-                    shutil.copy(path3,os.path.join(j, 'test1.jpg'))
+                    shutil.copy(path3, os.path.join(j, '002.jpg'))
                 except FileNotFoundError:
                     print('无法找到照片文件，请核对文件'+path3+'名称是否正确')
 
         for j in sh1:
             if coder in j:
                 try:
-                    shutil.copy(path4, os.path.join(j,'test.jpg'))
+                    shutil.copy(path4, os.path.join(j, '001.jpg'))
                 except FileNotFoundError:
                     print('无法找到照片文件，请核对文件'+path4+'名称是否正确'+'\n'+'如无使用人配偶身份证照片则忽略此条信息')
                 try:
-                    shutil.copy(path5,os.path.join(j, 'test1.jpg'))
+                    shutil.copy(path5, os.path.join(j, '002.jpg'))
                 except FileNotFoundError:
                     print('无法找到照片文件，请核对文件'+path5+'名称是否正确'+'\n'+'如无使用人配偶身份证照片则忽略此条信息')
 
