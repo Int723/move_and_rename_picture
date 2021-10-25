@@ -8,6 +8,7 @@ def move_picture(in_path, out_path):
     sh = []  # 所有使用人照片存放的路径集合
     sh1 = []  # 所有使用人配偶照片存放的路径集合
     f = []  # 所有照片文件集合
+    erro = []
 
     for home, dirs, filenames in os.walk(out_path):
         if "正元房地一体" in home and "Y_zjh" in home:  # 找到照片存放的文件夹位置
@@ -36,22 +37,24 @@ def move_picture(in_path, out_path):
                 try:
                     shutil.copy(path2, os.path.join(j,'001.jpg'))
                 except FileNotFoundError:
-                    print('无法找到照片文件，请核对文件'+path2+'名称是否正确')
+                    erro.append('无法找到照片文件，请核对文件'+path2+'名称是否正确')
                 try:
                     shutil.copy(path3, os.path.join(j, '002.jpg'))
                 except FileNotFoundError:
-                    print('无法找到照片文件，请核对文件'+path3+'名称是否正确')
+                    erro.append('无法找到照片文件，请核对文件'+path3+'名称是否正确')
 
         for j in sh1:
             if coder in j:
                 try:
                     shutil.copy(path4, os.path.join(j, '001.jpg'))
                 except FileNotFoundError:
-                    print('无法找到照片文件，请核对文件'+path4+'名称是否正确'+'\n'+'如无使用人配偶身份证照片则忽略此条信息')
+                    erro.append('无法找到照片文件，请核对文件'+path4+'名称是否正确'+'\n'+'如无使用人配偶身份证照片则忽略此条信息')
                 try:
                     shutil.copy(path5, os.path.join(j, '002.jpg'))
                 except FileNotFoundError:
-                    print('无法找到照片文件，请核对文件'+path5+'名称是否正确'+'\n'+'如无使用人配偶身份证照片则忽略此条信息')
+                    erro.append('无法找到照片文件，请核对文件'+path5+'名称是否正确'+'\n'+'如无使用人配偶身份证照片则忽略此条信息')
+
+    return erro
 
 
 inpath = "F:\\00软件项目\\昌乐模板\\苍穹软件模板"
